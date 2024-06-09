@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            /* background-image: url('../static/images/background.png');  */
+            background-size: cover; 
+            background-position: center;
+        }
+        body::after{
+            opacity: 0.5;
+        }
+        .menu-item {
+            width: 100px;
+            height: 200px;
+        }
+        .icon_card{
+            width: 32px;
+            height: 32px;
+        }
+        .card:hover{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body class="bg-dark">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4 text-light bg-dark">Hospital Care Management System</h1>
+        <div class="row row-cols-3">
+            <div class="col menu-item ">
+                <a href="/patient" class="text-decoration-none">
+                    <div class="card p-3 bg-light text-center">
+                        <img src="../static/images/outil-stethoscope.png" alt="" class="icon_card mx-auto mb-2">
+                        <h5 class="card-title text-center">Add Patient</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="col menu-item">
+                <a href="/doctor" class="text-decoration-none">
+                    <div class="card p-3 bg-light text-center">
+                        <img src="../static/images/medical.png" alt="" class="icon_card mx-auto mb-2">
+                        <h5 class="card-title text-center">Add Doctor</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="col menu-item">
+                <a href="/appointment" class="text-decoration-none">
+                    <div class="card p-3 bg-light text-center">
+                        <img src="../static/images/hopital.png" alt="" class="icon_card mx-auto mb-2">
+                        <h5 class="card-title text-center">Schedule Appointment</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="col menu-item">
+                <a href="/view_table/patients" class="text-decoration-none">
+                    <div class="card p-3 bg-light text-center">
+                        <img src="../static/images/liste-de-controle.png" alt="" class="icon_card mx-auto mb-2">
+                        <h5 class="card-title text-center">View Patients</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="col menu-item">
+                <a href="/view_table/doctors" class="text-decoration-none">
+                    <div class="card p-3 bg-light text-center">
+                        <img src="../static/images/liste-de-controle.png" alt="" class="icon_card mx-auto mb-2">
+                        <h5 class="card-title text-center">View Doctors</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="col menu-item">
+                <a href="/view_table/appointments" class="text-decoration-none">
+                    <div class="card p-3 bg-light text-center">
+                        <img src="../static/images/liste-de-controle.png" alt="" class="icon_card mx-auto mb-2">
+                        <h5 class="card-title text-center">View Appointments</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="col menu-item">
+                <a href="/export_table/patients" class="text-decoration-none">
+                    <div class="card p-3 bg-light text-center">
+                        <img src="../static/images/csv.png" alt="" class="icon_card mx-auto mb-2">
+                        <h5 class="card-title text-center">Export Patients to CSV</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="col menu-item">
+                <a href="/export_table/doctors" class="text-decoration-none">
+                    <div class="card p-3 bg-light text-center">
+                        <img src="../static/images/csv.png" alt="" class="icon_card mx-auto mb-2">
+                        <h5 class="card-title text-center">Export Doctors to CSV</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="col menu-item">
+                <a href="/export_table/appointments" class="text-decoration-none">
+                    <div class="card p-3 bg-light text-center">
+                        <img src="../static/images/csv.png" alt="" class="icon_card mx-auto mb-2">
+                        <h5 class="card-title text-center">Export Appointments to CSV</h5>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link Bootstrap JS and jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
