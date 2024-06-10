@@ -144,4 +144,5 @@ websocket-client==1.8.0
 wheel==0.43.0
 yarl==1.9.4
 zipp==3.18.1
+google-cloud-translate==3.8.4
 gunicorn
