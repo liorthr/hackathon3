@@ -3,58 +3,7 @@
 <head>
     <title>Add Patient</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-        }
-
-        input:checked + .slider {
-            background-color: #2196F3;
-        }
-
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-
-        .slider.round {
-            border-radius: 34px;
-        }
-
-        .slider.round:before {
-            border-radius: 50%;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.4/css/bootstrap3/bootstrap-switch.min.css">
 </head>
 <body>
     <div class="container mt-5">
@@ -69,20 +18,12 @@
                 <input type="text" class="form-control" id="age" name="age" required>
             </div>
             <div class="form-group">
-                <label for="gender">Gender:</label><br>
-                <label class="switch">
-                    <input type="checkbox" id="gender" name="gender" value="Male">
-                    <span class="slider round"></span>
-                </label>
-                <span id="gender-text">Male</span>
+                <label for="gender">Gender:</label>
+                <input type="checkbox" class="form-control" id="gender" name="gender" data-bootstrap-switch data-on-text="Male" data-off-text="Female" data-on-color="success" data-off-color="danger">
             </div>
             <div class="form-group">
-                <label for="vaccinate">Vaccinated:</label><br>
-                <label class="switch">
-                    <input type="checkbox" id="vaccinate" name="vaccinate" value="Yes">
-                    <span class="slider round"></span>
-                </label>
-                <span id="vaccinate-text">Yes</span>
+                <label for="vaccinate">Vaccinated:</label>
+                <input type="checkbox" class="form-control" id="vaccinate" name="vaccinate" data-bootstrap-switch data-on-text="Yes" data-off-text="No" data-on-color="success" data-off-color="danger">
             </div>
             <button type="submit" class="btn btn-primary">Add Patient</button>
         </form>
@@ -91,33 +32,13 @@
         </div>
     </div>
 
-    <!-- Link Bootstrap JS and jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.4/js/bootstrap-switch.min.js"></script>
     <script>
         $(document).ready(function(){
-            // Initialize gender switch
-            $('#gender').change(function() {
-                if($(this).is(':checked')) {
-                    $(this).val('Male');
-                    $('#gender-text').text('Male');
-                } else {
-                    $(this).val('Female');
-                    $('#gender-text').text('Female');
-                }
-            });
-
-            // Initialize vaccinate switch
-            $('#vaccinate').change(function() {
-                if($(this).is(':checked')) {
-                    $(this).val('Yes');
-                    $('#vaccinate-text').text('Yes');
-                } else {
-                    $(this).val('No');
-                    $('#vaccinate-text').text('No');
-                }
-            });
+            $("[data-bootstrap-switch]").bootstrapSwitch();
         });
     </script>
 </body>

@@ -101,8 +101,8 @@ def patient():
     if request.method == 'POST':
         name = request.form['name']
         age = request.form['age']
-        gender = request.form['gender']
-        vaccinate = request.form['vaccinate']
+        gender = 'Male' if 'gender' in request.form and request.form['gender'] == 'on' else 'Female'
+        vaccinate = 'Yes' if 'vaccinate' in request.form and request.form['vaccinate'] == 'on' else 'No'
         new_patient = Patient(name, age, gender, vaccinate)
         hospital.add_patient(new_patient)
         return redirect(url_for('menu'))
