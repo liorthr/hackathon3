@@ -1,3 +1,48 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Add Patient</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.4/css/bootstrap3/bootstrap-switch.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Add Patient</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="text" class="form-control" id="age" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <input type="checkbox" class="form-control" id="gender" name="gender" data-bootstrap-switch data-on-text="Male" data-off-text="Female" data-on-color="success" data-off-color="danger">
+            </div>
+            <div class="form-group">
+                <label for="vaccinate">Vaccinated:</label>
+                <input type="checkbox" class="form-control" id="vaccinate" name="vaccinate" data-bootstrap-switch data-on-text="Yes" data-off-text="No" data-on-color="success" data-off-color="danger">
+            </div>
+            <button type="submit" class="btn btn-primary">Add Patient</button>
+        </form>
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-secondary">Back to Menu</a>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.4/js/bootstrap-switch.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("[data-bootstrap-switch]").bootstrapSwitch();
+        });
+    </script>
+</body>
+</html> -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +53,23 @@
 <body>
     <div class="container mt-5">
         <h1 class="text-center mb-4">Add Patient</h1>
+        
+        <!-- Alert section -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <div class="alert-container">
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                  {{ message }}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+        
         <form method="POST">
             <div class="form-group">
                 <label for="name">Name:</label>

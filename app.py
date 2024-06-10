@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for, send_file
+from flask import Flask, render_template, request, redirect, url_for, send_file, flash
 import sqlite3
 import pandas as pd
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key'  # Nécessaire pour utiliser les messages flash
 
 class Patient:
     def __init__(self, name, age, gender, vaccinate):
@@ -96,6 +97,43 @@ hospital = Hospital()
 def menu():
     return render_template('menu.html')
 
+# @app.route('/patient', methods=['GET', 'POST'])
+# def patient():
+#     if request.method == 'POST':
+#         name = request.form['name']
+#         age = request.form['age']
+#         gender = 'Male' if 'gender' in request.form and request.form['gender'] == 'on' else 'Female'
+#         vaccinate = 'Yes' if 'vaccinate' in request.form and request.form['vaccinate'] == 'on' else 'No'
+#         new_patient = Patient(name, age, gender, vaccinate)
+#         hospital.add_patient(new_patient)
+#         return redirect(url_for('menu'))
+#     return render_template('patient.html')
+
+
+# @app.route('/doctor', methods=['GET', 'POST'])
+# def doctor():
+#     if request.method == 'POST':
+#         name = request.form['name']
+#         speciality = request.form['speciality']
+#         active = 'Yes' if 'active' in request.form else 'No'
+#         new_doctor = Doctor(name, speciality, active)
+#         hospital.add_doctor(new_doctor)
+#         return redirect(url_for('menu'))
+#     return render_template('doctor.html')
+
+
+# @app.route('/appointment', methods=['GET', 'POST'])
+# def appointment():
+#     if request.method == 'POST':
+#         patient_id = request.form['patient_id']
+#         doctor_id = request.form['doctor_id']
+#         date = request.form['date']
+#         time = request.form['time']
+#         hospital.schedule_appointment(patient_id, doctor_id, date, time)
+#         return redirect(url_for('menu'))
+#     return render_template('appointment.html')
+
+
 @app.route('/patient', methods=['GET', 'POST'])
 def patient():
     if request.method == 'POST':
@@ -105,21 +143,21 @@ def patient():
         vaccinate = 'Yes' if 'vaccinate' in request.form and request.form['vaccinate'] == 'on' else 'No'
         new_patient = Patient(name, age, gender, vaccinate)
         hospital.add_patient(new_patient)
-        return redirect(url_for('menu'))
+        flash('Patient added successfully!', 'success')
+        return redirect(url_for('patient'))
     return render_template('patient.html')
-
 
 @app.route('/doctor', methods=['GET', 'POST'])
 def doctor():
     if request.method == 'POST':
         name = request.form['name']
         speciality = request.form['speciality']
-        active = 'Yes' if 'active' in request.form else 'No'
+        active = 'Yes' if 'active' in request.form and request.form['active'] == 'on' else 'No'
         new_doctor = Doctor(name, speciality, active)
         hospital.add_doctor(new_doctor)
-        return redirect(url_for('menu'))
+        flash('Doctor added successfully!', 'success')
+        return redirect(url_for('doctor'))
     return render_template('doctor.html')
-
 
 @app.route('/appointment', methods=['GET', 'POST'])
 def appointment():
@@ -129,7 +167,8 @@ def appointment():
         date = request.form['date']
         time = request.form['time']
         hospital.schedule_appointment(patient_id, doctor_id, date, time)
-        return redirect(url_for('menu'))
+        flash('Appointment scheduled successfully!', 'success')
+        return redirect(url_for('appointment'))
     return render_template('appointment.html')
 
 @app.route('/view_table/<table_name>')

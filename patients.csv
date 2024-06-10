@@ -3,3 +3,8 @@ id,name,age,gender,vaccinate
 2,test1,21,M,Yes
 3,Test 1,21,M,yes
 4,bla,aa,M,Yes
+5,Test 4,22,No,No
+6,Test 5,33,No,No
+7,Albert,56,Male,Yes
+8,Ernando Polo,67,Male,No
+9,Guillaume Henri,34,Male,Yes
